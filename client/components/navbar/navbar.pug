@@ -1,0 +1,27 @@
+div.navbar.navbar-inverse.navbar-static-top
+  div.container-fluid
+    div.navbar-header
+      button.navbar-toggle(type='button', ng-click='$ctrl.isCollapsed = !$ctrl.isCollapsed')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand.bitelio(href='/') bitelio
+
+    div.navbar-collapse.collapse(uib-collapse='$ctrl.isCollapsed')
+      ul.nav.navbar-nav
+        li
+          a Demo
+
+      ul.nav.navbar-nav.navbar-right
+        li(uib-dropdown on-toggle="toggle(open)")
+          a(href uib-dropdown-toggle) user@bitelio.com
+            span.caret
+          ul.dropdown-menu(uib-dropdown-menu aria-labelledby="user-menu")
+            li: a(ui-sref='account')
+              i.fa.fa-user.fa-fw
+              | Account
+            li.divider(role="separator")
+            li: a(ui-sref='bitelio.com')
+              i.fa.fa-sign-out.fa-fw
+              | Log out
