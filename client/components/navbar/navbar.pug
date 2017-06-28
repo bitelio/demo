@@ -10,12 +10,21 @@ div.navbar.navbar-inverse.navbar-static-top
 
     div.navbar-collapse.collapse(uib-collapse='$ctrl.isCollapsed')
       ul.nav.navbar-nav
-        li
-          a Demo
+        li(uib-dropdown on-toggle="toggle(open)")
+          a(href uib-dropdown-toggle) {{ $ctrl.currentBoard }}&nbsp
+            span.caret(ng-if="$ctrl.availableBoards")
+          ul.dropdown-menu(uib-dropdown-menu aria-labelledby="boards-menu")
+            li(ng-repeat="board in $ctrl.availableBoards")
+              a(href, ng-click="$ctrl.select(board)")
+                i.fa.fa-angle-right.fa-fw
+                | {{ board }}
 
       ul.nav.navbar-nav.navbar-right
+        li.dropdown.dropdown-notifications(uib-dropdown on-toggle="toggle(open)")
+          a(href uib-dropdown-toggle)
+            i.fa.fa-bell
         li(uib-dropdown on-toggle="toggle(open)")
-          a(href uib-dropdown-toggle) user@bitelio.com
+          a(href uib-dropdown-toggle) {{ $ctrl.username }}&nbsp
             span.caret
           ul.dropdown-menu(uib-dropdown-menu aria-labelledby="user-menu")
             li: a(ui-sref='account')

@@ -28,10 +28,4 @@ describe('Component: MainComponent', function() {
     });
   }));
 
-  it('should attach a list of things to the controller', function() {
-    mainComponent.$onInit();
-    $httpBackend.flush();
-    expect(mainComponent.awesomeThings.length)
-      .to.equal(4);
-  });
 });
