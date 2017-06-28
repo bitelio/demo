@@ -6,17 +6,17 @@ import angular from 'angular';
 export class NavbarComponent {
   isCollapsed = true;
   username = 'user@bitelio.com';
-  currentBoard = "EU (Frankfurt am Main)";
+  currentBoard = 'EU (Frankfurt am Main)';
   availableBoards = [
-    "Asia Pacific (Singapore)",
-    "US East (New York)"
+    'Asia Pacific (Singapore)',
+    'US East (New York)'
   ];
 
   constructor() {
-    this.select = (board) => {
+    this.select = board => {
       this.availableBoards.push(this.currentBoard);
       this.currentBoard = this.availableBoards.shift(board);
-    }
+    };
   }
 }
 
