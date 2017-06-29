@@ -6,7 +6,7 @@ div.navbar.navbar-inverse.navbar-static-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand.bitelio(href='/') bitelio
+      a.navbar-brand.bitelio bitelio
 
     div.navbar-collapse.collapse(uib-collapse='$ctrl.isCollapsed')
       ul.nav.navbar-nav
@@ -14,23 +14,63 @@ div.navbar.navbar-inverse.navbar-static-top
           a(href uib-dropdown-toggle) {{ $ctrl.currentBoard }}&nbsp
             span.caret(ng-if="$ctrl.availableBoards")
           ul.dropdown-menu(uib-dropdown-menu aria-labelledby="boards-menu")
+            li: h4 Boards
             li(ng-repeat="board in $ctrl.availableBoards")
               a(href, ng-click="$ctrl.select(board)")
                 i.fa.fa-angle-right.fa-fw
                 | {{ board }}
 
+        li(uib-dropdown on-toggle="toggle(open)")
+          a(href uib-dropdown-toggle)
+            i.fa.fa-line-chart.fa-lg
+          ul.dropdown-menu(uib-dropdown-menu aria-labelledby="dashboards")
+            li: h4 Dashboards
+            li: a(href)
+              i.fa.fa-angle-right.fa-fw
+              | Quality
+            li: a(href)
+              i.fa.fa-angle-right.fa-fw
+              | Delivery
+            li.divider(role="separator")
+            li.disabled
+              a(href)
+                i.fa.fa-plus.fa-fw
+                | New dashboard
+
+        li(uib-dropdown on-toggle="toggle(open)")
+          a(href uib-dropdown-toggle)
+            i.fa.fa-columns.fa-lg
+          ul.dropdown-menu(uib-dropdown-menu aria-labelledby="settings")
+            li: h4 Board
+            li: a(href)
+              i.fa.fa-angle-right.fa-fw
+              | Phases
+            li: a(href)
+              i.fa.fa-angle-right.fa-fw
+              | Stations
+            li: a(href)
+              i.fa.fa-angle-right.fa-fw
+              | Locale
+
+
       ul.nav.navbar-nav.navbar-right
+        //-.col-sm-6
+          //-.navbar-form(role="search")
+            //-input.form-control(type="text" placeholder="Search")
+
         li.dropdown.dropdown-notifications(uib-dropdown on-toggle="toggle(open)")
           a(href uib-dropdown-toggle)
-            i.fa.fa-bell
+            i.fa.fa-bell.fa-lg
+
         li(uib-dropdown on-toggle="toggle(open)")
           a(href uib-dropdown-toggle) {{ $ctrl.username }}&nbsp
             span.caret
           ul.dropdown-menu(uib-dropdown-menu aria-labelledby="user-menu")
+            li: h4 Account
             li: a(ui-sref='account')
-              i.fa.fa-user.fa-fw
-              | Account
+              i.fa.fa-cogs.fa-fw
+              |   Settings
             li.divider(role="separator")
             li: a(ui-sref='bitelio.com')
               i.fa.fa-sign-out.fa-fw
-              | Log out
+              |   Log out
